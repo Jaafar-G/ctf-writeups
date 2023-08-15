@@ -37,8 +37,9 @@ My next thought was to find the buffer size or how many bytes it will take to ov
 (Helpful tip: use the cyclic_find function and pass the value of rip as a parameter find the position of the string sequence)
 
 ``` 
-b *pwnme+109
-x $rip
+b *pwnme+89
+
+
 ```
 
 
@@ -49,10 +50,12 @@ Step 3:
 
 Proof of Concept: Flag & Exploit
 
+![Screenshot_2023-08-15_18-09-19](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/da1a20a0-6ed0-44a4-a17a-d4b8de6b4866)
+
 
 
 Key takeaways:
-When using a sys call to execute a command ensure that the bytes of the stack are alinged to 0.
+
 
 References/Helpful Links:
 
