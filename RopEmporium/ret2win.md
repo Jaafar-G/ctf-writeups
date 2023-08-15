@@ -27,7 +27,8 @@ To do this i opened pwndbg (gdb) and used the command listed below.
 I then found the function ret2win which struck my curiosity due to the challenge name and description. 
 A picture showing the  results of the command is shown below, along with the function name highlighted.
 
-![Screenshot from 2023-08-15 15-36-25](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/5dcbe791-0d5f-40a9-a330-f1dc29ef0135)
+![Screenshot from 2023-08-15 15-56-27](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/8631e00c-1687-4eef-a48d-7dfa6b686a7b)
+
 
 Step 2: Find out buffer size
 My next thought was to find the buffer size or how many bytes it will take to overflow the buffer and overwrite the value of the RIP register. I did this by using the cyclic function in pwntools which generates a pattern of bytes. By using a pattern it is easier to find the position of the string that starts to overwrite the RIP register. You can do this by setting a breakpoint at pwnme+109 and examining rip register to see what part of the string is located in the rip register. I did this with the following commands.
