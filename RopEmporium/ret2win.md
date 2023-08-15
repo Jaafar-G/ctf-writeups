@@ -30,27 +30,27 @@ A picture showing the  results of the command is shown below, along with the fun
 ![Screenshot from 2023-08-15 15-56-27](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/8631e00c-1687-4eef-a48d-7dfa6b686a7b)
 
 
-Step 2: Find out buffer size
-My next thought was to find the buffer size or how many bytes it will take to overflow the buffer and overwrite the value of the RIP register. I did this by using the cyclic function in pwntools which generates a pattern of bytes. By using a pattern it is easier to find the position of the string that starts to overwrite the RIP register. You can do this by setting a breakpoint at pwnme+109 and examining rip register to see what part of the string is located in the rip register. I did this with the following commands.
+Step 2: Find out the buffer size
+
+My next thought was to find the buffer size or how many bytes it will take to overflow the buffer and overwrite the value of the RIP register. I did this by using the cyclic function in pwntools which generates a pattern of bytes. By using a pattern it is easier to find the position of the string that starts to overwrite the RIP register. You can do this by setting a breakpoint at pwnme+109 and examining rip register to see what part of the string is located in the rip register. I did this with the following commands. 
+
+(Helpful tip: use the cyclic_find function and pass the value of rip as a parameter find the position of the string sequence)
 
 ``` 
 b *pwnme+109
 x $rip
 ```
 
-Step 3:
-Step 4:
-Step 5:
-Step 6:
+
+Step 3: Call Ret2Win Function
+
+The buffer position for me was 40 so now i will append the address of ret2win to the payload and examine in gdb to see the outcome.
+
+
 
 Flag: FLAG-VALUE-GOES-HERE
 
-Key Takeaways/Learnings:
 
-    [Key learning or takeaway 1]
-    [Key learning or takeaway 2]
-    ...
-    [Key learning or takeaway N]
 
 References/Helpful Links:
 
@@ -59,7 +59,4 @@ References/Helpful Links:
 
 Conclusion:
 
-[Your final thoughts on the challenge, its difficulty level, and any tips for others attempting a similar challenge.]
-
-I hope this template serves you well for your CTF write-ups! Adjust as needed for the specifics of each challenge and your personal style. Remember, a good write-up not only provides a solution but also teaches and guides its readers. Happy hacking!
-.
+This was the first of the rop emporium challenges and a very good introductary challenge.
