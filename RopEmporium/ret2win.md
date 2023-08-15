@@ -44,13 +44,17 @@ x $rip
 
 Step 3: Call Ret2Win Function
 
-The buffer position for me was 40 so now i will append the address of ret2win to the payload and examine in gdb to see the outcome.
+The buffer position for me was 40 so now i will append the address of ret2win and a return address to the payload and examine in gdb to see the outcome.
 
 
 
-Flag: FLAG-VALUE-GOES-HERE
+Proof of Concept: Flag & Exploit
+
+![Screenshot from 2023-08-15 16-13-39](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/a6445804-c313-4a8d-803c-bdf72a2c7e72)
 
 
+Key takeaways:
+When using a sys call to execute a command ensure that the bytes of the stack are alinged to 0.
 
 References/Helpful Links:
 
@@ -59,4 +63,4 @@ References/Helpful Links:
 
 Conclusion:
 
-This was the first of the rop emporium challenges and a very good introductary challenge.
+This was the first of the rop emporium challenges and a very good introductary challenge. 
