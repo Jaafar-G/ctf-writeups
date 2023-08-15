@@ -46,11 +46,12 @@ Step 3: Call Ret2Win Function
 
 The buffer position for me was 40 so now i will append the address of ret2win and a return address to the payload and examine in gdb to see the outcome.
 
+***The use of a return address was to safely have somewhere to return and to ensure that the stack was aligned for the system call. Excluding this key part of the payload resulted in a segfault and this was the largest obstacle i had to overcome in this challenge.
 
 
 Proof of Concept: Flag & Exploit
 
-![Screenshot from 2023-08-15 16-13-39](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/a6445804-c313-4a8d-803c-bdf72a2c7e72)
+![Screenshot from 2023-08-15 16-25-29](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/84df518a-fd4f-47cd-822e-1714110d9842)
 
 
 Key takeaways:
