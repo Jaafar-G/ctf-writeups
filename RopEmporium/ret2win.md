@@ -20,8 +20,10 @@ Tools Used:
 
 Detailed Approach
 Step 1: Find the Function to be called.
-To do this i opened pwndbg (gdb) and used the command listed below. 
+To do this i opened pwndbg (gdb) and used the command listed below.
+
 ``` info functions```
+
 I then found the function ret2win which struck my curiosity due to the challenge name and description. 
 A picture showing the  results of the command is shown below, along with the function name highlighted.
 
