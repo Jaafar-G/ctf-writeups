@@ -28,7 +28,6 @@ To do this i opened pwndbg (gdb) and used the command listed below.
 I then found the function ret2win which struck my curiosity due to the challenge name and description. 
 A picture showing the  results of the command is shown below, along with the function name highlighted.
 
-![Screenshot from 2023-08-15 15-56-27](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/8631e00c-1687-4eef-a48d-7dfa6b686a7b)
 
 
 Step 2: Find out the buffer size
@@ -43,16 +42,13 @@ x $rip
 ```
 
 
-Step 3: Call Ret2Win Function
+Step 3: 
 
-The buffer position for me was 40 so now i will append the address of ret2win and a return address to the payload and examine in gdb to see the outcome.
 
-***The use of a return address was to safely have somewhere to return and to ensure that the stack was aligned for the system call. Excluding this key part of the payload resulted in a segfault and this was the largest obstacle i had to overcome in this challenge.
 
 
 Proof of Concept: Flag & Exploit
 
-![Screenshot from 2023-08-15 16-25-29](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/84df518a-fd4f-47cd-822e-1714110d9842)
 
 
 Key takeaways:
