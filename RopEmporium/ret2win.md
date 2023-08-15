@@ -1,29 +1,26 @@
 CTF Write-up Template
 
-Title: [Challenge Name]
+Title: ret2win
 
-Category: [e.g., Web, Cryptography, Forensics, Binary, etc.]
+Category: Binary Exploitation
 
-Points: [Point Value]
-
-Challenge Description:
-
-[Insert the challenge description exactly as provided in the CTF]
+Challenge Description: 
+Locate a method that you want to call within the binary. Call it by overwriting a saved return address on the stack.
 
 Initial Analysis:
-
-[Write a brief about your first impression or anything that stood out when you first looked at the challenge]
+The challenge description was pretty straightforward so i knew exactly what had to be done from the beginning of the challenge.
 
 Tools Used:
 
-    [Tool Name 1]
-    [Tool Name 2]
-    ...
-    [Tool Name N]
+    ipython3
+    tmux
+    pwndbg
+    pwntools
+    
 
 Detailed Approach:
 
-    Step 1: [Describe the first thing you did or tried. Include any initial outputs or findings. If possible, use screenshots or code snippets to provide context.]
+    Step 1: I knew that i had to locate the function that needed to be called to i first wanted to locate the adress of it. to do this i hopped into gdb and 
 
     Step 2: [Describe the next thing you did. Discuss any barriers you encountered and how you overcame them.]
 
