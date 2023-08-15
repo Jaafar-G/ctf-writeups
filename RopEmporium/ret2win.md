@@ -18,9 +18,9 @@ Tools Used:
     pwntools
     
 
-Detailed Approach:
+Detailed Approach
 
-    Step 1: I knew that i had to locate the function that needed to be called to i first wanted to locate the adress of it. To do this i opened gdb and used the info functions to find the address of ret2win, as seen in the photo below.
+    Step 1.  I knew that i had to locate the function that needed to be called to i first wanted to locate the adress of it. To do this i opened gdb and used the info functions to find the address of ret2win, as seen in the photo below.
 
     Step 2: The next thing i did was find out how many bytes it took to overflow. 
 
