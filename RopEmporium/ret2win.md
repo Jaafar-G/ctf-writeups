@@ -29,7 +29,14 @@ A picture showing the  results of the command is shown below, along with the fun
 
 ![Screenshot from 2023-08-15 15-36-25](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/5dcbe791-0d5f-40a9-a330-f1dc29ef0135)
 
-Step 2:
+Step 2: Find out buffer size
+My next thought was to find the buffer size or how many bytes it will take to overflow the buffer and overwrite the value of the RIP register. I did this by using the cyclic function in pwntools which generates a pattern of bytes. By using a pattern it is easier to find the position of the string that starts to overwrite the RIP register. You can do this by setting a breakpoint at pwnme+109 and examining rip register to see what part of the string is located in the rip register. I did this with the following commands.
+
+``` 
+b *pwnme+109
+x $rip
+```
+
 Step 3:
 Step 4:
 Step 5:
