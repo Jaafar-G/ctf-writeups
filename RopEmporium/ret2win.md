@@ -50,8 +50,7 @@ This system call executes the command cat flag wich will display the flag in the
 
 Proof of Concept: Flag & Exploit
 
-/home/kali/Pictures/Screenshot_2023-08-15_18-06-25.png
-
+![Screenshot_2023-08-15_18-06-25](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/0ec90dc2-e54c-4020-b234-d3d6863999d3)
 
 References/Helpful Links:
 
