@@ -1,4 +1,4 @@
-CTF Write-up Template
+CTF Write-up Rop Emporium Ret2Win
 
 Title: ret2win
 
@@ -19,12 +19,20 @@ Tools Used:
     
 
 Detailed Approach
+Step 1: Find the Function to be called.
+To do this i opened pwndbg (gdb) and used the command listed below. 
+``` info functions```
+I then found the function ret2win which struck my curiosity due to the challenge name and description. 
+A picture showing the  results of the command is shown below, along with the function name highlighted.
 
-    Step 1. I knew that i had to locate the function that needed to be called to i first wanted to locate the adress of it. To do this i opened gdb and used the info functions to find the address of ret2win, as seen in the photo below.
+![image]![Screenshot from 2023-08-15 15-32-36](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/5ab65f44-8528-4138-b734-3c8cba101460)
 
-    Step 2: The next thing i did was find out how many bytes it took to overflow. 
 
-N. Final Step: [Your breakthrough moment when you captured the flag. Describe in detail.]
+Step 2:
+Step 3:
+Step 4:
+Step 5:
+Step 6:
 
 Flag: FLAG-VALUE-GOES-HERE
 
