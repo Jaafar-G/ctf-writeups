@@ -25,8 +25,7 @@ To do this i opened pwndbg (gdb) and used the command listed below.
 I then found the function ret2win which struck my curiosity due to the challenge name and description. 
 A picture showing the  results of the command is shown below, along with the function name highlighted.
 
-![image]![Screenshot from 2023-08-15 15-32-36](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/5ab65f44-8528-4138-b734-3c8cba101460)
-
+![Screenshot from 2023-08-15 15-36-25](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/5dcbe791-0d5f-40a9-a330-f1dc29ef0135)
 
 Step 2:
 Step 3:
