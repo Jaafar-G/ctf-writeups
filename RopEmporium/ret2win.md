@@ -20,11 +20,9 @@ Tools Used:
 
 Detailed Approach:
 
-    Step 1: I knew that i had to locate the function that needed to be called to i first wanted to locate the adress of it. to do this i hopped into gdb and 
+    Step 1: I knew that i had to locate the function that needed to be called to i first wanted to locate the adress of it. To do this i opened gdb and used the info functions to find the address of ret2win, as seen in the photo below.
 
-    Step 2: [Describe the next thing you did. Discuss any barriers you encountered and how you overcame them.]
-
-...
+    Step 2: The next thing i did was find out how many bytes it took to overflow. 
 
 N. Final Step: [Your breakthrough moment when you captured the flag. Describe in detail.]
 
@@ -47,3 +45,4 @@ Conclusion:
 [Your final thoughts on the challenge, its difficulty level, and any tips for others attempting a similar challenge.]
 
 I hope this template serves you well for your CTF write-ups! Adjust as needed for the specifics of each challenge and your personal style. Remember, a good write-up not only provides a solution but also teaches and guides its readers. Happy hacking!
+.
