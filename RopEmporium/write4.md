@@ -46,8 +46,24 @@ disass usefulFunction
 
 Step 2: Finding out what address to use in order write the string to memory.
 
-``` 
-ropper --file callme --search  "ret"
+First i used the recommended tool readelf to veiw the segments of memory and the persimissions associated with each segment. This allowed me to view where i could write to memory.
+I have a picture demonstrating what i did below for referrence. 
+
+![write42](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/0e0ef250-d046-49ae-a8ed-05ac65e74db7)
+
+
+Then i searched for gadgets with the ropper tool in order to find 
+
+![write43](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/66e5acdf-836e-4a24-af89-8809caa712f3)
+
+
+![write44](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/426df81d-c5cd-4b01-ac78-a730d0a87f00)
+
+
+```
+readelf -l write4
+ropper --file write4
+ropper --file write4 --search  "ret"
 ```
 
 
