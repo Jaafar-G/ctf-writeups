@@ -5,8 +5,7 @@ Title: split
 Category: Binary Exploitation
 
 Challenge Description: 
-The elements that allowed you to complete ret2win are still present, they've just been split apart.
-Find them and recombine them using a short ROP chain.
+The elements that allowed you to complete ret2win are still present, they've just been split apart. Find them and recombine them using a short ROP chain. I'll let you in on a secret: that useful string "/bin/cat flag.txt" is still present in this binary, as is a call to system(). It's just a case of finding them and chaining them together to make the magic happen. 
 
 Initial Analysis:
 I completed the last challenge so i knew what this one entailed except this time i knew i had to chain together instructions in order to obtain the flag.
@@ -20,13 +19,19 @@ Tools Used:
     
 
 Detailed Approach
-Step 1: Find the Function to be called.
-To do this i opened pwndbg (gdb) and used the command listed below.
 
-``` info functions```
+(The buffer value size turned out to be the same as last challenge so please refer to the ret2win writeup on how to find that i will not be going over that again.)
 
-I then found the function ret2win which struck my curiosity due to the challenge name and description. 
-A picture showing the  results of the command is shown below, along with the function name highlighted.
+Step 1: Find the Function to be called. And find the useful String.
+To do this i opened pwndbg (gdb) and used the commands listed below to find the useful string and useful functions.
+
+``` 
+info functions
+search "/bin/cat flag.txt"
+```
+
+I then found the function usefulFunction which contains the same mov edi and call to system as the last challenge. However this this time the mov to edi is just /bin/ls and not the useful string.
+After finding the address of the useful string i knew that i knew which function to call and what value had to be in edi at the time of the system call i just had to find a way to place that value into edi for the system call. A picture showing the  results of the command is shown below, along with the function name highlighted.
 
 
 
