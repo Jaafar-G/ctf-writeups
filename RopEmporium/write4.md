@@ -47,18 +47,29 @@ disass usefulFunction
 Step 2: Finding out what address to use in order write the string to memory.
 
 First i used the recommended tool readelf to veiw the segments of memory and the persimissions associated with each segment. This allowed me to view where i could write to memory.
-I have a picture demonstrating what i did below for referrence. 
+I have a picture demonstrating what i did below for referrence.
+
+*** 
+Side note - Trying to find the address to pop into r14 was a huge obstacle for me. I had never done this before and this proved to be the most difficult part of the challenge by far
+I experiemented with countless different addresses for numerous hours and I was constantly doing trial and error until i noticed a memory address in the gadgets that looked viable. 
+Although this obstacle  was a little frustrating, this made getting the flag much sweeter.
+***
 
 ![write42](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/0e0ef250-d046-49ae-a8ed-05ac65e74db7)
 
 
-Then i searched for gadgets with the ropper tool in order to find 
+Then I searched for gadgets with the ropper tool in order to find a pop r14 and pop r15 so that i may start trying to write to memory and i found them in the pictures below. However,
+as mentioned above I had difficulties with finding an address to write to until i noticed a gadget that moved a value into to edi. This gadget caught my eye and it was in a segment
+of memory that had the correct write permissions so i decided to give it a shot, and low and behold it ended up working and allowed me to write to memory. 
+( Picture below sowing the gadget with the memory address mention as well as the gadgets used )
 
 ![write43](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/66e5acdf-836e-4a24-af89-8809caa712f3)
 
+Below is a picture of how to search for the specific gadget with ropper.
 
 ![write44](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/426df81d-c5cd-4b01-ac78-a730d0a87f00)
 
+As always the commands i used are listed here below for copy and paste.
 
 ```
 readelf -l write4
