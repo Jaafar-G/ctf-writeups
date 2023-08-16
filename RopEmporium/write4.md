@@ -63,11 +63,12 @@ as mentioned above I had difficulties with finding an address to write to until 
 of memory that had the correct write permissions so i decided to give it a shot, and low and behold it ended up working and allowed me to write to memory. 
 ( Picture below sowing the gadget with the memory address mention as well as the gadgets used )
 
-![write43](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/66e5acdf-836e-4a24-af89-8809caa712f3)
+![write44](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/426df81d-c5cd-4b01-ac78-a730d0a87f00)
 
 Below is a picture of how to search for the specific gadget with ropper.
 
-![write44](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/426df81d-c5cd-4b01-ac78-a730d0a87f00)
+![write43](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/66e5acdf-836e-4a24-af89-8809caa712f3)
+
 
 As always the commands i used are listed here below for copy and paste.
 
