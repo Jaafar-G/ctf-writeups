@@ -81,7 +81,7 @@ ropper --file write4 --search  "ret"
 
 
 Step 3: Form the Chain
-Now that i know what to do and have all the tools necessary to do it, i will form the rop chain. 
+Now that i know what to do and have all the tools necessary to do it, i will form the rop chain. First i will add the buf to the payload, then the gadget to pop r14 & r15 follow by their respective values, then the usefulgadgets function in order to write to memory i will then pop in to rdi the memory address of r14 and call printfile to get the flag see the full exploit below along with proof of concept. I hoped you all enjoyed and thanks for checking out my writeup!
 
 
 Proof of Concept: Flag & Exploit
