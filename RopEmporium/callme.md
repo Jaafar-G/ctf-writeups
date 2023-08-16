@@ -1,6 +1,6 @@
-CTF Write-up Rop Emporium Split
+CTF Write-up Rop Emporium Callme
 
-Title: split
+Title: callme
 
 Category: Binary Exploitation
 
@@ -27,8 +27,8 @@ Detailed Approach
 (The buffer value size turned out to be the same as last challenge so please refer to the ret2win writeup on how to find that i will not be going over that again.)
 
 Step 1: Find out how to load the arguments into the respective resgisters and where to call the functions.
-I first decided to see what king of functions are present in this binary as i have recognized a pattern of usefulFunctions/strings/gadgets that are provided.
-after running info functions i found the three call me functions however what seemed more interesting were the usefulGadgets and usefulfunctions functions.
+I first decided to see what kind of functions are present in this binary as i have recognized a pattern of usefulFunctions/strings/gadgets that are provided.
+After running info functions I found the three callme functions; however what seemed more interesting were the usefulGadgets and usefulfunctions functions.
 
 ![callme1](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/e4154130-2885-4165-930c-837259ca2501)
 
@@ -42,7 +42,10 @@ I then disassembled the usefulFunction and found the addresses of the functions 
 
 ![callme4](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/b048acd2-bd2c-49c6-80df-5e690946e234)
 
+Now using the above information I crafted a payload with the buffer size, then the usefulgadgets address along with the arguments to be passed in the correct order
+and finally the callme_one address to test my concept.
 
+Commands used are listed below
 
 ``` 
 info functions
@@ -50,15 +53,19 @@ disass usefulGadgets
 disass usefulFunction
 ```
 
-I then found the function usefulFunction which contains the same mov edi and call to system as the last challenge. However this this time the mov to edi is just /bin/ls and not the useful string.
-After finding the address of the useful string i knew that i knew which function to call and what value had to be in edi at the time of the system call i just had to find a way to place that value into edi for the system call. A picture showing the results of the commands is shown below. 
-
-
 
 Step 2: Find out how to call functions properly
 
-My next thought was to find a gadget that would allow me to place the value of usefulstring into edi and then return to the system call to cat the flag into the shell. To find the gadget i used a tool called ropper this tool is recommended by ROP emporium and worked pretty well for me during the challenge. The command i used along with a picture of the results is shown below for referrence.
+My next thought was to find a way to correctly call the functions since this is mentioned in the challenge description. 
+After trying to return to call me after usefulGadgets i kept running into problems so instead i decided to use another ret gadget and then return to callme_one
+which worked. This obstacle is shown in the picture below. 
 
+ ![callme5](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/40356a60-1ad4-4684-acdc-52c386965f9f)
+
+ I was running into this issue I beleive due to stack alignment or because the function was not setting the stack frame correctly I am not entirely sure; 
+ however by adding an extra ret gadget before callme_one i seemed to have resolved the issue and the function call has happened correctly. The description 
+ of the challenge also mentions incorrect function calls present in the binary so this also might be the issue. Nevertheless i found a ret gdaget
+using the command demonstrated below and was able to get around this issue. 
 
 ``` 
 ropper --file callme --search  "ret"
@@ -68,17 +75,17 @@ ropper --file callme --search  "ret"
 
 
 Step 3: Form the Chain
-Now that i know what to do and have all the tools necessary to do it, i will form the rop chain. First i will add the buf, then the address of the pop rdi gadget, the address of the usefulstring to be popped into rdi, and then the address of the system call. The order of the payload is important because you must first fill the buffer return to the gadget with the value you would like directly after it in the payload so it is popped correctly then when it is in edi the call to system so that it is the argument passed to the function call.
-
-``` 
-b *pwnme+89
-```
+Now that i know what to do and have all the tools necessary to do it, i will form the rop chain. First i will add the buf, then the address of the usefulGadgets function, followed by the
+arguments placed in the correct order, and the ret gadget, and finally callme_one. The rest of the payload was just the usefulgadgets, the repeated arguments, and the next callme function
+to call in the order specified by the challenge description. I have my exploit shown below as proof of concept and i hope you all enjoyed my explanation.
 
 
 Proof of Concept: Flag & Exploit
 
+![callmeproof](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/f5785e2f-10fb-4372-8b53-d4143f83fd0a)
 
 
 Conclusion:
 
-This was the second of the rop emporium challenges and a very good challenge displaying how to modify the edi register which holds the first parameter of a function. This is very useful to know and i recommend this challenge to everyone. 
+This was the third of the rop emporium challenges and a very good challenge displaying how to pass arguments to functions, return to specific functions, and ultimately 
+control the flow of a program by using ROP chains. It was a nice challenge and it was very interesting to watch the controlflow of a program be manipulated.
