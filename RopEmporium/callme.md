@@ -29,8 +29,20 @@ Detailed Approach
 Step 1: Find out how to load the arguments into the respective resgisters and where to call the functions.
 I first decided to see what king of functions are present in this binary as i have recognized a pattern of usefulFunctions/strings/gadgets that are provided.
 after running info functions i found the three call me functions however what seemed more interesting were the usefulGadgets and usefulfunctions functions.
-after disassembling them i found the gadgets needed to load the arguments into the correct registers and addresses of the functions to call.
-This is shown in the pictures below and i have also listed the commands that i used.
+
+![callme1](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/e4154130-2885-4165-930c-837259ca2501)
+
+I then decided to disassmble the usefulGadgets function to determine how it would be useful, in which I found the gadgets needed to load the arguments into the correct registers.
+( Results shown in picture below )
+
+![callme2](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/a22fd9a3-eb75-4575-a590-46d6bfb1a6ec)
+
+I then disassembled the usefulFunction and found the addresses of the functions to be called in order to get the flag.
+( Results shown in picture below )
+
+![callme4](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/b048acd2-bd2c-49c6-80df-5e690946e234)
+
+
 
 ``` 
 info functions
@@ -38,26 +50,21 @@ disass usefulGadgets
 disass usefulFunction
 ```
 
-![callme1](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/e4154130-2885-4165-930c-837259ca2501)
-![callme2](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/a22fd9a3-eb75-4575-a590-46d6bfb1a6ec)
-![callme3](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/6de244cd-e59a-4bba-a320-00c003245dd4)
-![callme4](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/b048acd2-bd2c-49c6-80df-5e690946e234)
-
-
 I then found the function usefulFunction which contains the same mov edi and call to system as the last challenge. However this this time the mov to edi is just /bin/ls and not the useful string.
 After finding the address of the useful string i knew that i knew which function to call and what value had to be in edi at the time of the system call i just had to find a way to place that value into edi for the system call. A picture showing the results of the commands is shown below. 
 
 
 
-Step 2: Find out how to place the usefulstring value into edi.
+Step 2: Find out how to call functions properly
 
 My next thought was to find a gadget that would allow me to place the value of usefulstring into edi and then return to the system call to cat the flag into the shell. To find the gadget i used a tool called ropper this tool is recommended by ROP emporium and worked pretty well for me during the challenge. The command i used along with a picture of the results is shown below for referrence.
 
 
 ``` 
-ropper --file split --search  "pop rdi"
+ropper --file callme --search  "ret"
 ```
 
+![callme3](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/6de244cd-e59a-4bba-a320-00c003245dd4)
 
 
 Step 3: Form the Chain
