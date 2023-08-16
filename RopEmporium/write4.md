@@ -30,9 +30,9 @@ Detailed Approach
 
 Step 1: Inspect funtions
 As always i start with inspecting the functions listed in gdb from this binary to get a good idea of what is present for use and how i should approach this challenge. After running the info functions i found a usefulFuntion and usefulGadgets function so similar to the last challenge i disassebled them to take a look at what they do.
-I found that the useful funtion is similar to the earlier challenges in that it includes a call to print file. Knowing this and the fact that the challenge description mentions that i have to write flag.txt to memory i knew
-that i had to pass that string as an argument to the printfile function. Then by disassembling the usefulGadgets
-funtion i found that it included a mov [r14], r15 which moves the value 
+
+I found that the useful funtion is similar to the earlier challenges in that it includes a call to print file. Knowing this and the fact that the challenge description mentions that i have to write flag.txt to memory i knew that i had to pass that string as an argument to the printfile function. Then by disassembling the usefulGadgets funtion i found that it included a mov [r14], r15 which moves the value of r15 into to the memory location pointed to by r14. This is what allows us to write to the memory, after the r14 register will be a pointer to the value that was moved into it 
+by r15.
 
 Commands used are listed below Along with a picture of results.
 
