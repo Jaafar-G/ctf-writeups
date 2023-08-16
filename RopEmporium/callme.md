@@ -7,12 +7,11 @@ Category: Binary Exploitation
 Challenge Description: 
 Reliably make consecutive calls to imported functions. Use some new techniques and learn about the Procedure Linkage Table. How do you make consecutive calls to a function from your ROP chain that won't crash afterwards?
 If you keep using the call instructions already present in the binary your chains will eventually fail, especially when exploiting 32 bit binaries. Consider why this might be the case. 
-You must call the callme_one(), callme_two() and callme_three() functions in that order, each with the arguments 0xdeadbeef, 0xcafebabe, 0xd00df00d e.g. callme_one(0xdeadbeef, 0xcafebabe, 0xd00df00d) to print the flag.
-For the x86_64 binary double up those values, e.g. callme_one(0xdeadbeefdeadbeef, 0xcafebabecafebabe, 0xd00df00dd00df00d)
+You must call the callme_one(), callme_two() and callme_three() functions in that order, each with the arguments 0xdeadbeef, 0xcafebabe, 0xd00df00d e.g. callme_one(0xdeadbeef, 0xcafebabe, 0xd00df00d) to print the flag. For the x86_64 binary double up those values, e.g. callme_one(0xdeadbeefdeadbeef, 0xcafebabecafebabe, 0xd00df00dd00df00d)
 
 Initial Analysis:
-By now i know how to return to different functions however i am curious to see how this challenge differs fro the rest and what obstacles will be in place. We are given very useful hints as what to do 
-in the challenge page description so lets see if we can combine the things we have learned to solve this challenge.
+By now i know how to return to different functions however i am curious to see how this challenge differs fro the rest and what obstacles will be in place. 
+We are given very useful hints as what to do in the challenge page description so lets see if we can combine the things we have learned to solve this challenge.
 
 Tools Used:
 
@@ -27,14 +26,23 @@ Detailed Approach
 
 (The buffer value size turned out to be the same as last challenge so please refer to the ret2win writeup on how to find that i will not be going over that again.)
 
-Step 1: 
-To do this i opened pwndbg (gdb) and used the commands listed below to find the useful string and useful functions.
+Step 1: Find out how to load the arguments into the respective resgisters and where to call the functions.
+I first decided to see what king of functions are present in this binary as i have recognized a pattern of usefulFunctions/strings/gadgets that are provided.
+after running info functions i found the three call me functions however what seemed more interesting were the usefulGadgets and usefulfunctions functions.
+after disassembling them i found the gadgets needed to load the arguments into the correct registers and addresses of the functions to call.
+This is shown in the pictures below and i have also listed the commands that i used.
 
 ``` 
 info functions
-search "/bin/cat flag.txt"
+disass usefulGadgets
 disass usefulFunction
 ```
+
+![callme1](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/e4154130-2885-4165-930c-837259ca2501)
+![callme2](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/a22fd9a3-eb75-4575-a590-46d6bfb1a6ec)
+![callme3](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/6de244cd-e59a-4bba-a320-00c003245dd4)
+![callme4](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/b048acd2-bd2c-49c6-80df-5e690946e234)
+
 
 I then found the function usefulFunction which contains the same mov edi and call to system as the last challenge. However this this time the mov to edi is just /bin/ls and not the useful string.
 After finding the address of the useful string i knew that i knew which function to call and what value had to be in edi at the time of the system call i just had to find a way to place that value into edi for the system call. A picture showing the results of the commands is shown below. 
