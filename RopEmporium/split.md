@@ -35,6 +35,7 @@ disass usefulFunction
 I then found the function usefulFunction which contains the same mov edi and call to system as the last challenge. However this this time the mov to edi is just /bin/ls and not the useful string.
 After finding the address of the useful string i knew that i knew which function to call and what value had to be in edi at the time of the system call i just had to find a way to place that value into edi for the system call. A picture showing the results of the commands is shown below. 
 
+![Screenshot from 2023-08-16 11-00-24](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/bf33424f-1553-480e-b61a-8faddeb9bf0a)
 
 
 Step 2: Find out how to place the usefulstring value into edi.
