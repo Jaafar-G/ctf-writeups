@@ -63,7 +63,7 @@ ropper --file badchars ---search "add"
 
 Step 3: How to change the bytes into the correct values
 
-Knowing the above knowledge, I decided to take the altered string and place it into the correct memory value. I used the same method as the last challenge so please refer to my write4 writeup to see how that is done. After doing this i used the add gadget at address 0x40062c to alter the string fl`f-twt at the byte positions that were altered from flag.txt. This resulted in me obtaining the correct string 'flag.txt'. I then popped this into rdi and then received the flag.
+Knowing the above knowledge, I decided to take the altered string and place it into the correct memory value. I used the same method as the last challenge so please refer to my write4 writeup to see how that is done. After doing this i used the add gadget at address 0x40062c to alter the string fl`f-twt at the byte positions ( shown below in full exploit ) that were altered from flag.txt. This resulted in me obtaining the correct string 'flag.txt'. I then popped this into rdi and then received the flag.
 
 
 Proof of Concept: Flag & Exploit 
