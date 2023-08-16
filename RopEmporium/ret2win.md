@@ -25,11 +25,10 @@ To do this i opened pwndbg (gdb) and used the command listed below.
 ```
 info functions
 disass ret2win
-x 
+x/s 0x400943
 ```
 
-I then found the function ret2win which struck my curiosity due to the challenge name and description. 
-A picture showing the  results of the command is shown below, along with the function name highlighted.
+I then found the function ret2win which struck my curiosity due to the challenge name and description. I decided to disassemble the function to take a look at what it does. Then i found an interesting instruction that moved a value into edi and then made a system call. I examined the value and realized this function moves the value /bin/cat flag.txt and then makes a system call which would print the flag to the shell. A picture showing the  results of the commands is shown below.
 
 ![Screenshot from 2023-08-15 15-56-27](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/8631e00c-1687-4eef-a48d-7dfa6b686a7b)
 
@@ -60,10 +59,6 @@ Proof of Concept: Flag & Exploit
 
 ![Screenshot_2023-08-15_18-06-25](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/0ec90dc2-e54c-4020-b234-d3d6863999d3)
 
-References/Helpful Links:
-
-    [Link to a tool or resource that helped you]
-    [Any blogs or forums that guided you]
 
 Conclusion:
 
