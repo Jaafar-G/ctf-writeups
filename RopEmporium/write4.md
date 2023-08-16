@@ -50,7 +50,7 @@ First i used the recommended tool readelf to veiw the segments of memory and the
 I have a picture demonstrating what i did below for referrence.
 
 *** 
-Side note - Trying to find the address to pop into r14 was a huge obstacle for me. I had never done this before and this proved to be the most difficult part of the challenge by far
+Side note - Trying to find the address to pop into r14 was a huge obstacle for me. I had never done this before and this proved to be the most difficult part of the challenge by far.
 I experiemented with countless different addresses for numerous hours and I was constantly doing trial and error until i noticed a memory address in the gadgets that looked viable. 
 Although this obstacle  was a little frustrating, this made getting the flag much sweeter.
 ***
