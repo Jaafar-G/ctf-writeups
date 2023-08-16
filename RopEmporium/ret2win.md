@@ -46,13 +46,15 @@ x $rsp
 ```
 Below is a picture of the results:
 
-![ret2win1](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/9b4ce3fe-1670-452c-ac3e-de647bfcad72)
+![ret2win1](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/393def85-8fa5-4984-adac-72ed960a5338)
 
 
 Step 3: Call Ret2Win Function
 
 The buffer position for me was 40 so now i will append the address of ret2win and go to the instruction that moves /bin/cat/flag into edi to be called by system.
 This system call executes the command cat flag wich will display the flag in the shell.
+
+![ret2win2](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/600ea953-6638-4aaa-9cc9-4cdd5834f7c2)
 
 
 Proof of Concept: Flag & Exploit
