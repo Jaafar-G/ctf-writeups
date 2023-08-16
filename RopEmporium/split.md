@@ -16,6 +16,7 @@ Tools Used:
     tmux
     pwndbg
     pwntools
+    ropper
     
 
 Detailed Approach
