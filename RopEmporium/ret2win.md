@@ -8,7 +8,7 @@ Challenge Description:
 Locate a method that you want to call within the binary. Call it by overwriting a saved return address on the stack.
 
 Initial Analysis:
-The challenge description was pretty straightforward so i knew exactly what had to be done from the beginning of the challenge.
+The challenge description was pretty straightforward so I had a good idea of what had to be done from the beginning of the challenge.
 
 Tools Used:
 
@@ -22,13 +22,18 @@ Detailed Approach
 Step 1: Find the Function to be called.
 To do this i opened pwndbg (gdb) and used the command listed below.
 
-``` info functions```
+```
+info functions
+disass ret2win
+x 
+```
 
 I then found the function ret2win which struck my curiosity due to the challenge name and description. 
 A picture showing the  results of the command is shown below, along with the function name highlighted.
 
 ![Screenshot from 2023-08-15 15-56-27](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/8631e00c-1687-4eef-a48d-7dfa6b686a7b)
 
+![ret2win3](https://github.com/Jaafar-G/ctf-writeups/assets/120587992/8c06f38a-55db-4ec5-ae48-6e3e906e462e)
 
 Step 2: Find out the buffer size
 
